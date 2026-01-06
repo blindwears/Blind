@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Field Inventory Capture</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div>
+        <p class="eyebrow">Mobile Inventory</p>
+        <h1>Capture items on the move</h1>
+        <p class="subhead">
+          Walk around, snap photos or record short videos, and build your inventory list.
+        </p>
+      </div>
+      <button id="start-camera" class="primary">Start camera</button>
+    </header>
+
+    <main class="app-main">
+      <section class="capture">
+        <div class="camera-shell">
+          <video id="camera" autoplay playsinline muted></video>
+          <canvas id="photo-canvas" width="640" height="480" hidden></canvas>
+          <div id="camera-status" class="camera-status">
+            Camera off. Tap “Start camera” to begin.
+          </div>
+        </div>
+        <div class="controls">
+          <div class="control-row">
+            <button id="take-photo" class="secondary" disabled>Take photo</button>
+            <button id="start-record" class="secondary" disabled>Record video</button>
+            <button id="stop-record" class="secondary" disabled>Stop recording</button>
+          </div>
+          <div class="control-row">
+            <label class="input-group">
+              Item name
+              <input id="item-name" type="text" placeholder="e.g. Laptop, Tool kit" />
+            </label>
+            <label class="input-group">
+              Product number
+              <input id="product-number" type="text" placeholder="e.g. INV-1042" />
+            </label>
+          </div>
+          <div class="control-row">
+            <label class="input-group">
+              Vendor
+              <input id="vendor-name" type="text" placeholder="e.g. Acme Supply" />
+            </label>
+            <label class="input-group">
+              Vendor price
+              <input id="vendor-price" type="number" min="0" step="0.01" placeholder="e.g. 249.99" />
+            </label>
+          </div>
+          <label class="input-group">
+            Location
+            <input id="item-location" type="text" placeholder="e.g. Warehouse A" />
+          </label>
+          <label class="input-group">
+            Notes
+            <textarea id="item-notes" rows="3" placeholder="Add details, serials, or conditions"></textarea>
+          </label>
+          <div class="control-row">
+            <button id="add-item" class="primary" disabled>Add to inventory</button>
+            <button id="export-csv" class="secondary" disabled>Export to Excel (CSV)</button>
+          </div>
+          <p class="helper-text">
+            Export downloads a CSV for Excel with item name, product number, vendor, and price.
+            Media stays on this device.
+          </p>
+        </div>
+      </section>
+
+      <section class="inventory">
+        <div class="inventory-header">
+          <h2>Inventory list</h2>
+          <p id="inventory-count">0 items captured</p>
+        </div>
+        <div id="inventory-list" class="inventory-list"></div>
+      </section>
+    </main>
+
+    <template id="inventory-card-template">
+      <article class="inventory-card">
+        <div class="media"></div>
+        <div class="details">
+          <div>
+            <h3></h3>
+            <p class="meta"></p>
+            <p class="notes"></p>
+          </div>
+          <button class="danger">Remove</button>
+        </div>
+      </article>
+    </template>
+
+    <footer class="app-footer">
+      <p>Tip: Use a modern mobile browser that supports camera access.</p>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>

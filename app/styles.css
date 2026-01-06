@@ -1,0 +1,258 @@
+:root {
+  color-scheme: light;
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  --bg: #f5f6f8;
+  --card: #ffffff;
+  --text: #1b1f2a;
+  --muted: #5f6b7a;
+  --primary: #2b6cb0;
+  --primary-dark: #224f86;
+  --secondary: #e2e8f0;
+  --danger: #e53e3e;
+  --border: #e1e5ea;
+  --shadow: 0 12px 32px rgba(16, 24, 40, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 2.5rem clamp(1.5rem, 4vw, 4rem);
+  background: var(--card);
+  box-shadow: var(--shadow);
+}
+
+.app-header h1 {
+  margin: 0.35rem 0;
+  font-size: clamp(2rem, 4vw, 2.75rem);
+}
+
+.subhead {
+  margin: 0;
+  color: var(--muted);
+  max-width: 32rem;
+}
+
+.eyebrow {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.7rem;
+  color: var(--muted);
+}
+
+.app-main {
+  padding: 2rem clamp(1.5rem, 4vw, 4rem) 4rem;
+  display: grid;
+  gap: 2.5rem;
+}
+
+.capture {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  align-items: start;
+}
+
+.camera-shell {
+  position: relative;
+  background: #0f172a;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  min-height: 320px;
+  display: grid;
+  place-items: center;
+}
+
+.camera-shell video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.camera-status {
+  position: absolute;
+  inset: auto 1.5rem 1.5rem;
+  padding: 0.75rem 1rem;
+  background: rgba(15, 23, 42, 0.72);
+  color: #f8fafc;
+  border-radius: 999px;
+  font-size: 0.85rem;
+}
+
+.controls {
+  background: var(--card);
+  padding: 1.5rem;
+  border-radius: 1.5rem;
+  box-shadow: var(--shadow);
+  display: grid;
+  gap: 1.25rem;
+}
+
+.control-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.input-group {
+  display: grid;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+  flex: 1;
+}
+
+.helper-text {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+input,
+textarea {
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+button {
+  border: none;
+  border-radius: 999px;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+  box-shadow: none;
+}
+
+button:not(:disabled):hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.15);
+}
+
+.primary {
+  background: var(--primary);
+  color: white;
+}
+
+.primary:hover {
+  background: var(--primary-dark);
+}
+
+.secondary {
+  background: var(--secondary);
+  color: var(--text);
+}
+
+.danger {
+  background: #fed7d7;
+  color: var(--danger);
+}
+
+.inventory {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.inventory-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.inventory-list {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.inventory-card {
+  background: var(--card);
+  border-radius: 1.5rem;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  display: grid;
+  grid-template-rows: 200px auto;
+}
+
+.inventory-card .media {
+  background: #0f172a;
+  display: grid;
+  place-items: center;
+}
+
+.media-placeholder {
+  color: #e2e8f0;
+  font-size: 0.9rem;
+  text-align: center;
+  padding: 1rem;
+}
+
+.inventory-card img,
+.inventory-card video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.inventory-card .details {
+  padding: 1rem 1.25rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.inventory-card h3 {
+  margin: 0 0 0.35rem;
+}
+
+.inventory-card .meta {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.inventory-card .notes {
+  margin: 0.75rem 0 0;
+  color: var(--text);
+  font-size: 0.95rem;
+}
+
+.app-footer {
+  text-align: center;
+  padding: 2rem 1.5rem 3rem;
+  color: var(--muted);
+}
+
+@media (max-width: 720px) {
+  .app-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .inventory-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}
